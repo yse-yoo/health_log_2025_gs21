@@ -16,7 +16,8 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // 2. AI診断
 $service = new GeminiService();
 // TODO: AI診断の実行
-$service->chat($data, 'gemini-2.0-flash');
+$advice = $service->chat($data);
+// $advice = $service->chat($data, 'gemini-2.0-flash');
 
 // 3. レスポンス整形
 $output = [
