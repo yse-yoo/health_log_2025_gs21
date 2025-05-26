@@ -3,7 +3,7 @@
 require_once 'app.php';
 
 // TODO: GETリクエストから id を取得
-$id = null;
+$id = $_GET['id'] ?? 0;
 
 // id を渡してレコードを取得
 $record = find($id);
@@ -24,7 +24,7 @@ function find($id)
     // データベース接続
     $pdo = Database::getInstance();
     // TODO: health_recordsテーブルから該当レコードを取得
-    $sql = "";
+    $sql = "SELECT * FROM health_records WHERE id = :id";
     // プリペアドステートメントを作成
     $stmt = $pdo->prepare($sql);
     // SQLを実行
